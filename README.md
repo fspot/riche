@@ -28,7 +28,7 @@ Functionalities
 
 - should work with any TCP server (based on a simple single connection).
 - riche-client handle network deconnections and will try to reconnect.
-- access (on the port 8566 here) can be restricted to an IP adress. This is easily done via a web interface.
+- access (on the port 8566 here) is restricted to an IP adress. This is easily done via a protected web interface.
 
 Issues
 ======
