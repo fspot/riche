@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des serveurs accessibles{% endblock %}
+
+{% block main %}
+<h1>Liste des serveurs accessibles :</h1>
+{% if machines %}
+	<ul class="fichiers">
+	{% for m in machines %}
+		<li>
+			{% if m.ip_ok == ip %}
+				<span class="ip_ok" title="{{ m.ip_ok }}">{{ m.nom }}</span>
+				<a href="{{ url_for('clear_ip', nom=m.nom) }}"> ✗ </a>
+			{% else %}
+				<span class="ip_non_ok" title="{{ m.ip_ok }}">{{ m.nom }}</span>
+				<a href="{{ url_for('set_ip', nom=m.nom) }}"> ✓ </a>
+			{% endif %}	
+		</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+{% endblock %}

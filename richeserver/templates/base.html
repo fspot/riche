@@ -1,0 +1,107 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merienda One">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Port Lligat Slab">
+    <style>
+		body { 
+			margin:0;  
+			padding:0;  
+			background: no-repeat center center fixed;  
+			background-image: -moz-linear-gradient(#CDCBD0, #F0EDE9);  
+			background-image: -webkit-linear-gradient(#CDCBD0, #F0EDE9);  
+			background-size : cover; }
+		#main { 
+			margin: auto;  
+			width: 50%;  
+			margin-top: 100px; 
+		    background-color: #F3F3F3; 
+		    box-shadow: 0px 0px 30px black; 
+		    border-radius: 10px;  
+		    text-align:center;  
+		    padding-top: 10px;  
+		    padding-bottom: 40px;  }
+		h1 { 
+			font-family: Merienda One; 
+			text-shadow: 1px 1px 2px #2C2235;  
+			font-size: 170%; }
+		label { 
+			font-family: Port Lligat Slab; }
+		#btsub { 
+			position:relative;  
+			left: 39%; 
+			top: 23px; 
+			width: 140px;  
+			background-image: -moz-linear-gradient(#B31A16, #FF521E);  
+			background-image: -webkit-linear-gradient(#B31A16, #FF521E);  
+			color: white;  
+			border: none; 
+			border-radius: 3px;  
+			box-shadow: 1px 1px 7px black; 
+			font-size: 130%; 
+			font-family: Merienda One;  font-weight:bold; }
+		#btsub:hover { 
+			background-image: -moz-linear-gradient(#FF521E, #B31A16);  
+			background-image: -webkit-linear-gradient(#FF521E, #B31A16);  
+			color: white;  
+			font-weight: bold;  
+			border: none; 
+			border-radius: 3px;  
+			box-shadow: 1px 1px 2px black; }
+		.flashed {
+			position: relative;
+			right:20px;
+			list-style-type: none; }
+		.flashed li {
+			font-family: Port Lligat Slab; 
+			text-align: center;
+			padding: 5px;
+			margin-bottom: 10px;
+			border-radius: 3px;
+			box-shadow: 1px 1px 9px black; }
+		.succes li {
+			background-image: -moz-linear-gradient(#B7FF4F, #6CD043);
+			background-image: -webkit-linear-gradient(#B7FF4F, #6CD043); }
+		.error li {
+			background-image: -moz-linear-gradient(#F43600, #D83C31);
+			background-image: -webkit-linear-gradient(#F43600, #D83C31); }
+		.ip_ok {
+			font-weight: bold;
+			border-bottom: 1px dotted grey;
+			color: black; }
+		.ip_non_ok {
+			color: grey; }
+		a {
+			color: black;
+			text-decoration: none; }
+		.fichiers {
+			text-align: left;
+			list-style-type: circle;
+			font-family: Port Lligat Slab; }
+    </style>
+</head>
+<body>
+
+{# on affiche les messages d'erreur puis les messages de succes #}
+{% for categorie in ['error', 'succes'] %}
+    {% with msgs = get_flashed_messages(category_filter=[categorie]) %}
+        {% if msgs %}
+        <ul class="flashed {{ categorie }}">
+            {% for m in msgs %}
+                <li>{{ m|safe }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+{% endfor %}
+
+<div id="main">
+    {% block main %}{% endblock %}
+</div>
+
+</body>
+</html>
