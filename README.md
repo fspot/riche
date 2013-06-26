@@ -1,7 +1,7 @@
 riche
 =====
 
-Reverse SSH for poors. -- uses Python Twisted.
+Reverse SSH for poors. -- uses Python Twisted
 
 usage
 =====
